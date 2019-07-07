@@ -8,17 +8,17 @@ env = gym.make("MountainCar-v0")
 
 LEARNING_RATE = 0.1
 DISCOUNT = 0.95
-EPISODES = 5000
+EPISODES = 10000
 
-SHOW_EVERY = 500
+SHOW_EVERY = 5000
 
-DISCRETE_OS_SIZE = [20] * len(env.observation_space.high)
+DISCRETE_OS_SIZE = [40] * len(env.observation_space.high)
 discrete_os_win_size = (env.observation_space.high - env.observation_space.low)/DISCRETE_OS_SIZE
 
 # Exploration settings
-epsilon = 0.5  # not a constant, qoing to be decayed
+epsilon = 1  # not a constant, qoing to be decayed
 START_EPSILON_DECAYING = 1
-END_EPSILON_DECAYING = EPISODES//2
+END_EPSILON_DECAYING = EPISODES // 2
 epsilon_decay_value = epsilon/(END_EPSILON_DECAYING - START_EPSILON_DECAYING)
 
 
@@ -105,4 +105,5 @@ plt.plot(aggr_ep_rewards['ep'],aggr_ep_rewards['avg'], label = "avg")
 plt.plot(aggr_ep_rewards['ep'],aggr_ep_rewards['min'], label = "min")
 plt.plot(aggr_ep_rewards['ep'],aggr_ep_rewards['max'], label = "max")
 plt.legend(loc=4)
+plt.grid(True)
 plt.show()
